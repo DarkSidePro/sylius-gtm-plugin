@@ -1,0 +1,10 @@
+parameters:
+    locale: 'pl_PL'
+    sylius_gtm_plugin.events:
+        add_payment_info: 'Dodano informacje o płatności'
+        add_to_cart: 'Dodano do koszyka'
+        begin_checkout: 'Rozpoczęto proces zakupu'
+        purchase: 'Zakup zakończony'
+        remove_from_cart: 'Usunięto z koszyka'
+        view_item_list: 'Wyświetlono listę produktów'
+        view_item: 'Wyświetlono produkt'

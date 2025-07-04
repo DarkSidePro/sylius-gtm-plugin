@@ -1,0 +1,10 @@
+parameters:
+    locale: 'en_US'
+    sylius_gtm_plugin.events:
+        add_payment_info: 'Add payment info'
+        add_to_cart: 'Add to cart'
+        begin_checkout: 'Begin checkout'
+        purchase: 'Purchase completed'
+        remove_from_cart: 'Removed from cart'
+        view_item_list: 'Viewed item list'
+        view_item: 'Viewed item'

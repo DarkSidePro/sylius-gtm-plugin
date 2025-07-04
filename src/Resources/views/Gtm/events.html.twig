@@ -1,0 +1,6 @@
+{% for event in app.session.flashbag.get('gtm_event') %}
+<script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({{ event|json_encode|raw }});
+</script>
+{% endfor %}
