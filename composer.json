@@ -16,6 +16,9 @@
         "symfony/event-dispatcher": "^5.4 || ^6.0",
         "symfony/twig-bundle": "^5.4 || ^6.0"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
     "autoload": {
         "psr-4": {
             "DarkSidePro\\SyliusGtmPlugin\\": "src/"
