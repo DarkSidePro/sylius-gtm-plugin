@@ -2,19 +2,19 @@
 
 namespace DarkSidePro\SyliusGtmPlugin\EventListener;
 
+use DarkSidePro\SyliusGtmPlugin\Factory\EventFactoryInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use DarkSidePro\SyliusGtmPlugin\Factory\EventFactory;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 final class ViewItemListSubscriber implements EventSubscriberInterface
 {
-    private SessionInterface $session;
-    private EventFactory $eventFactory;
+    private FlashBagInterface $flashBag;
+    private EventFactoryInterface $eventFactory;
 
-    public function __construct(SessionInterface $session, EventFactory $eventFactory)
+    public function __construct(FlashBagInterface $flashBag, EventFactoryInterface $eventFactory)
     {
-        $this->session = $session;
+        $this->flashBag = $flashBag;
         $this->eventFactory = $eventFactory;
     }
 
@@ -38,7 +38,7 @@ final class ViewItemListSubscriber implements EventSubscriberInterface
                 ];
             }
             $viewListEvent = $this->eventFactory->createViewItemList($products[0] ?? null, $items);
-            $this->session->getFlashBag()->add('gtm_event', $viewListEvent->toArray());
+            $this->flashBag->add('gtm_event', $viewListEvent->toArray());
         }
     }
 }
