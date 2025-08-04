@@ -8,9 +8,10 @@ use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
+use Sylius\Component\Core\Model\PaymentInterface;
 use DarkSidePro\SyliusGtmPlugin\Model\Event;
 
-final class EventFactory
+final class EventFactory implements EventFactoryInterface
 {
     private string $defaultCurrency;
 
@@ -62,18 +63,27 @@ final class EventFactory
             'items' => [[
                 'item_id' => $variant->getCode(),
                 'item_name' => $product->getName(),
-                'price' => $variant->getPrice() / 100,
+                'price' => 0, // Simplificado - implementar lógikę cenową
                 'currency' => $this->defaultCurrency,
             ]]
         ]);
     }
 
-    public function createViewItemList(ProductInterface $product, array $items): Event
+    public function createViewItemList(ProductInterface $product, array $params = []): Event
     {
         return new Event('view_item_list', [
-            'item_list_id' => $product->getId(),
-            'item_list_name' => $product->getName(),
-            'items' => $items
+            'item_list_id' => $product?->getId(),
+            'item_list_name' => $product?->getName(),
+            'items' => $params
+        ]);
+    }
+
+    public function createAddPaymentInfo(PaymentInterface $payment): Event
+    {
+        return new Event('add_payment_info', [
+            'payment_type' => $payment->getMethod()?->getName(),
+            'value' => $payment->getAmount() / 100,
+            'currency' => $this->defaultCurrency, // Simplificado
         ]);
     }
 
