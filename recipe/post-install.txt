@@ -1,0 +1,7 @@
+# Post install script for Symfony Flex
+# This file helps with automatic bundle registration
+
+# For manual installation, add this to your config/bundles.php:
+# DarkSidePro\SyliusGtmPlugin\DarkSideProSyliusGtmPlugin::class => ['all' => true],
+
+# Don't forget to configure GTM_CONTAINER_ID in your .env file!

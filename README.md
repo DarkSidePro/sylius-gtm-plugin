@@ -15,13 +15,24 @@ i inne zgodne z Enhanced Ecommerce.
 
 1. Zainstaluj plugin przez Composer:
 
-```
+```bash
 composer require darksidepro/sylius-gtm-plugin
+```
+
+**Uwaga:** Plugin automatycznie rejestruje się dzięki Symfony Flex (jeśli jest dostępny). W przeciwnym przypadku musisz ręcznie dodać do pliku `config/bundles.php`:
+
+```php
+<?php
+
+return [
+    // ... inne bundles
+    DarkSidePro\SyliusGtmPlugin\DarkSideProSyliusGtmPlugin::class => ['all' => true],
+];
 ```
 
 2. Dodaj do pliku `.env`:
 
-```
+```env
 GTM_CONTAINER_ID=GTM-XXXXXXX
 ```
 

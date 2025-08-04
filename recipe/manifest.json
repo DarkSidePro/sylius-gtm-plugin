@@ -1,0 +1,13 @@
+{
+    "bundles": {
+        "DarkSidePro\\SyliusGtmPlugin\\DarkSideProSyliusGtmPlugin": ["all"]
+    },
+    "env": {
+        "GTM_CONTAINER_ID": "GTM-XXXXXXX"
+    },
+    "gitignore": [
+        "/.env.local",
+        "/.env.local.php",
+        "/.env.*.local"
+    ]
+}

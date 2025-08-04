@@ -1,7 +1,7 @@
 {
     "name": "darksidepro/sylius-gtm-plugin",
     "type": "sylius-plugin",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Google Tag Manager integration for Sylius 2.x",
     "license": "MIT",
     "authors": [
@@ -27,7 +27,20 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
+        },
+        "symfony": {
+            "allow-contrib": false,
+            "require": "6.4.*|7.0.*"
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@php -r \"echo '\\n\\033[32mSylius GTM Plugin installed successfully!\\033[0m\\n';\"",
+            "@php -r \"echo '\\033[33mDon\\'t forget to add GTM_CONTAINER_ID to your .env file and register the bundle in config/bundles.php if not using Flex.\\033[0m\\n';\""
+        ],
+        "post-update-cmd": [
+            "@php -r \"echo '\\n\\033[32mSylius GTM Plugin updated successfully!\\033[0m\\n';\""
+        ]
     },
     "config": {
         "allow-plugins": {
