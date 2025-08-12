@@ -1,6 +1,0 @@
-services:
-    DarkSidePro\SyliusGtmPlugin\EventListener\AddToCartSubscriber:
-        arguments:
-            - '@session'
-        tags:
-            - { name: 'kernel.event_subscriber' }
