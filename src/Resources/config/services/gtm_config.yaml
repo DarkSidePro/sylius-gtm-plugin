@@ -1,5 +1,3 @@
 services:
     DarkSidePro\SyliusGtmPlugin\Service\GtmConfigProvider:
-        arguments:
-            - '@parameter_bag'
         public: true
