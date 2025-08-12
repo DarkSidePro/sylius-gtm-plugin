@@ -10,15 +10,16 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Sylius\Bundle\UiBundle\Event\MenuBuilderEvent;
+use DarkSidePro\SyliusGtmPlugin\Service\GtmConfigProvider;
 
 final class GtmHeadSubscriber implements EventSubscriberInterface
 {
-    private string $gtmId;
+    private GtmConfigProvider $gtmConfigProvider;
     private Environment $twig;
 
-    public function __construct(string $gtmId, Environment $twig)
+    public function __construct(GtmConfigProvider $gtmConfigProvider, Environment $twig)
     {
-        $this->gtmId = $gtmId;
+        $this->gtmConfigProvider = $gtmConfigProvider;
         $this->twig = $twig;
     }
 
@@ -33,7 +34,7 @@ final class GtmHeadSubscriber implements EventSubscriberInterface
     {
         try {
             return $this->twig->render('@SyliusGtm/Gtm/head.html.twig', [
-                'gtm_id' => $this->gtmId,
+                'gtm_id' => $this->gtmConfigProvider->getContainerId(),
             ]);
         } catch (LoaderError | RuntimeError | SyntaxError $e) {
             return '<!-- GTM Head Error: ' . $e->getMessage() . ' -->';

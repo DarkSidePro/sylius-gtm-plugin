@@ -1,62 +1,67 @@
 services:
     DarkSidePro\SyliusGtmPlugin\EventListener\AddToCartSubscriber:
         arguments:
+            - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
             - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\PurchaseSubscriber:
         arguments:
+            - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
             - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\CheckoutSubscriber:
         arguments:
+            - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
             - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\CartSubscriber:
         arguments:
+            - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
             - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\ProductSubscriber:
         arguments:
+            - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
             - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\RemoveFromCartSubscriber:
         arguments:
-            - '@request_stack'
             - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
+            - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\ViewItemSubscriber:
         arguments:
-            - '@request_stack'
             - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
+            - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\ViewItemListSubscriber:
         arguments:
-            - '@request_stack'
             - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
+            - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\AddPaymentInfoSubscriber:
         arguments:
-            - '@request_stack'
             - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
+            - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\GtmHeadSubscriber:
         arguments:
-            - '%env(GTM_CONTAINER_ID)%'
+            - '@DarkSidePro\SyliusGtmPlugin\Service\GtmConfigProvider'
             - '@twig'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\GtmBodySubscriber:
         arguments:
-            - '%env(GTM_CONTAINER_ID)%'
+            - '@DarkSidePro\SyliusGtmPlugin\Service\GtmConfigProvider'
             - '@twig'
         tags:
             - { name: 'kernel.event_subscriber' }
