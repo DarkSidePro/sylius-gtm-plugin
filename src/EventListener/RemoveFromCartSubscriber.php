@@ -4,17 +4,17 @@ namespace DarkSidePro\SyliusGtmPlugin\EventListener;
 
 use Sylius\Component\Core\Model\OrderItemInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use DarkSidePro\SyliusGtmPlugin\Factory\EventFactory;
 
 final class RemoveFromCartSubscriber implements EventSubscriberInterface
 {
-    private SessionInterface $session;
+    private RequestStack $requestStack;
     private EventFactory $eventFactory;
 
-    public function __construct(SessionInterface $session, EventFactory $eventFactory)
+    public function __construct(RequestStack $requestStack, EventFactory $eventFactory)
     {
-        $this->session = $session;
+        $this->requestStack = $requestStack;
         $this->eventFactory = $eventFactory;
     }
 
@@ -31,7 +31,14 @@ final class RemoveFromCartSubscriber implements EventSubscriberInterface
             /** @var OrderItemInterface $orderItem */
             $orderItem = $event->getOrderItem();
             $removeEvent = $this->eventFactory->createRemoveFromCart($orderItem);
-            $this->session->getFlashBag()->add('gtm_event', $removeEvent->toArray());
+            
+            $request = $this->requestStack->getCurrentRequest();
+            if (null !== $request) {
+                $session = $request->getSession();
+                $gtmEvents = $session->get('gtm_events', []);
+                $gtmEvents[] = $removeEvent->toArray();
+                $session->set('gtm_events', $gtmEvents);
+            }
         }
     }
 }

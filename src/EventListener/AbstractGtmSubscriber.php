@@ -35,6 +35,10 @@ abstract class AbstractGtmSubscriber implements EventSubscriberInterface
 
     protected function getSession(): SessionInterface
     {
-        return $this->requestStack->getSession();
+        $request = $this->requestStack->getCurrentRequest();
+        if (null === $request) {
+            throw new \RuntimeException('No active request found');
+        }
+        return $request->getSession();
     }
 }

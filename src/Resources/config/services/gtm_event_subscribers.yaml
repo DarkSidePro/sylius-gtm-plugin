@@ -1,50 +1,50 @@
 services:
     DarkSidePro\SyliusGtmPlugin\EventListener\AddToCartSubscriber:
         arguments:
-            - '@session'
+            - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\PurchaseSubscriber:
         arguments:
-            - '@session'
+            - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\CheckoutSubscriber:
         arguments:
-            - '@session'
+            - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\CartSubscriber:
         arguments:
-            - '@session'
+            - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\ProductSubscriber:
         arguments:
-            - '@session'
+            - '@request_stack'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\RemoveFromCartSubscriber:
         arguments:
-            - '@session'
+            - '@request_stack'
             - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\ViewItemSubscriber:
         arguments:
-            - '@session'
+            - '@request_stack'
             - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\ViewItemListSubscriber:
         arguments:
-            - '@session'
+            - '@request_stack'
             - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
         tags:
             - { name: 'kernel.event_subscriber' }
     DarkSidePro\SyliusGtmPlugin\EventListener\AddPaymentInfoSubscriber:
         arguments:
-            - '@session'
+            - '@request_stack'
             - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
         tags:
             - { name: 'kernel.event_subscriber' }

@@ -4,15 +4,15 @@ namespace DarkSidePro\SyliusGtmPlugin\EventListener;
 
 use Sylius\Bundle\OrderBundle\Event\OrderItemEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 final class AddToCartSubscriber implements EventSubscriberInterface
 {
-    private SessionInterface $session;
+    private RequestStack $requestStack;
 
-    public function __construct(SessionInterface $session)
+    public function __construct(RequestStack $requestStack)
     {
-        $this->session = $session;
+        $this->requestStack = $requestStack;
     }
 
     public static function getSubscribedEvents(): array
@@ -26,7 +26,15 @@ final class AddToCartSubscriber implements EventSubscriberInterface
     {
         $orderItem = $event->getOrderItem();
         $product = $orderItem->getProduct();
-        $this->session->getFlashBag()->add('gtm_event', [
+        
+        $request = $this->requestStack->getCurrentRequest();
+        if (null === $request) {
+            return;
+        }
+        
+        $session = $request->getSession();
+        $gtmEvents = $session->get('gtm_events', []);
+        $gtmEvents[] = [
             'event' => 'add_to_cart',
             'ecommerce' => [
                 'items' => [
@@ -38,6 +46,7 @@ final class AddToCartSubscriber implements EventSubscriberInterface
                     ]
                 ]
             ]
-        ]);
+        ];
+        $session->set('gtm_events', $gtmEvents);
     }
 }
