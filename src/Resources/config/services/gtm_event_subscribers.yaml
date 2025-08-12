@@ -48,3 +48,15 @@ services:
             - '@DarkSidePro\SyliusGtmPlugin\Factory\EventFactory'
         tags:
             - { name: 'kernel.event_subscriber' }
+    DarkSidePro\SyliusGtmPlugin\EventListener\GtmHeadSubscriber:
+        arguments:
+            - '%env(GTM_CONTAINER_ID)%'
+            - '@twig'
+        tags:
+            - { name: 'kernel.event_subscriber' }
+    DarkSidePro\SyliusGtmPlugin\EventListener\GtmBodySubscriber:
+        arguments:
+            - '%env(GTM_CONTAINER_ID)%'
+            - '@twig'
+        tags:
+            - { name: 'kernel.event_subscriber' }
