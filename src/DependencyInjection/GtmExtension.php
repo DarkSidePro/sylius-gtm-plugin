@@ -15,5 +15,13 @@ final class GtmExtension extends Extension
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
+        
+        // Register Twig paths
+        $twigConfig = $container->getExtensionConfig('twig');
+        if (!isset($twigConfig[0]['paths'])) {
+            $twigConfig[0]['paths'] = [];
+        }
+        $twigConfig[0]['paths'][__DIR__ . '/../Resources/views'] = 'SyliusGtm';
+        $container->prependExtensionConfig('twig', $twigConfig[0]);
     }
 }

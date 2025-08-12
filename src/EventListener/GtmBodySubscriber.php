@@ -31,7 +31,7 @@ final class GtmBodySubscriber implements EventSubscriberInterface
     public function renderGtmBody(): string
     {
         try {
-            return $this->twig->render('@DarkSideProSyliusGtmPlugin/Gtm/body.html.twig', [
+            return $this->twig->render('@SyliusGtm/Gtm/body.html.twig', [
                 'gtm_id' => $this->gtmId,
             ]);
         } catch (LoaderError | RuntimeError | SyntaxError $e) {

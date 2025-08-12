@@ -1,7 +1,7 @@
 {
     "name": "darksidepro/sylius-gtm-plugin",
     "type": "sylius-plugin",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Google Tag Manager integration for Sylius 2.x",
     "license": "MIT",
     "authors": [

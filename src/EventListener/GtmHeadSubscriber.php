@@ -32,7 +32,7 @@ final class GtmHeadSubscriber implements EventSubscriberInterface
     public function renderGtmHead(): string
     {
         try {
-            return $this->twig->render('@DarkSideProSyliusGtmPlugin/Gtm/head.html.twig', [
+            return $this->twig->render('@SyliusGtm/Gtm/head.html.twig', [
                 'gtm_id' => $this->gtmId,
             ]);
         } catch (LoaderError | RuntimeError | SyntaxError $e) {

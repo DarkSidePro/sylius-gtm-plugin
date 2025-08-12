@@ -40,12 +40,12 @@ GTM_CONTAINER_ID=GTM-XXXXXXX
 
 W `<head>`:
 ```twig
-{% include '@DarkSideProSyliusGtmPlugin/Gtm/head.html.twig' with { gtm_container_id: gtm_config_provider.getContainerId() } %}
+{% include '@SyliusGtm/Gtm/head.html.twig' with { gtm_container_id: gtm_config_provider.getContainerId() } %}
 ```
 
 Zaraz po otwarciu `<body>`:
 ```twig
-{% include '@DarkSideProSyliusGtmPlugin/Gtm/body.html.twig' with { gtm_container_id: gtm_config_provider.getContainerId() } %}
+{% include '@SyliusGtm/Gtm/body.html.twig' with { gtm_container_id: gtm_config_provider.getContainerId() } %}
 ```
 
 4. Upewnij się, że serwis `GtmConfigProvider` jest dostępny w Twig (np. przez własny TwigExtension lub globalną zmienną).
