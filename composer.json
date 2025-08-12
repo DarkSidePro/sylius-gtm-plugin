@@ -1,7 +1,7 @@
 {
     "name": "darksidepro/sylius-gtm-plugin",
     "type": "sylius-plugin",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Google Tag Manager integration for Sylius 2.x",
     "license": "MIT",
     "authors": [
@@ -14,7 +14,8 @@
         "php": "^8.2",
         "sylius/sylius": "^2.0",
         "symfony/event-dispatcher": "^5.4 || ^6.0 || ^7.0",
-        "symfony/twig-bundle": "^5.4 || ^6.0 || ^7.0"
+        "symfony/twig-bundle": "^5.4 || ^6.0 || ^7.0",
+        "symfony/yaml": "^5.4 || ^6.0 || ^7.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.0"

@@ -1,0 +1,4 @@
+imports:
+    - { resource: 'services/gtm_config.yaml' }
+    - { resource: 'services/event_factory.yaml' }
+    - { resource: 'services/gtm_event_subscribers.yaml' }
