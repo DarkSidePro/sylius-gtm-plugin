@@ -1,4 +1,13 @@
-<import resource="services/gtm_config.yaml" />
-<import resource="services/add_to_cart_subscriber.yaml" />
-<import resource="services/gtm_event_subscribers.yaml" />
-    <!-- ...existing code... -->
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <imports>
+        <import resource="services/gtm_config.yaml" />
+        <import resource="services/event_factory.yaml" />
+        <import resource="services/gtm_event_subscribers.yaml" />
+    </imports>
+
+</container>
